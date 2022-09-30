@@ -4,6 +4,7 @@ public class StudentMain {
     public static void main(String[] args) {
         final int MAX_SIZE = 2;
         Student[] students = new Student[MAX_SIZE];
+        StudentOperation operation = new StudentOperation();
         Scanner scanner = new Scanner(System.in);
         int count = 0;
         int choice;
@@ -47,12 +48,12 @@ public class StudentMain {
                     }
                 }
                 case 2: {
-                    display(students, count);
+                    display(students, operation, count);
                     break;
                 }
                 case 3: {
                     sort(students, count);
-                    display(students, count);
+                    display(students, operation, count);
                     break;
                 }
                 case 4: {
@@ -70,12 +71,12 @@ public class StudentMain {
 
     }
 
-    public static void display(Student[] students, int noOfObject) {
+    public static void display(Student[] students, StudentOperation operation, int noOfObject) {
         System.out.println("\n------------------------- STUDENT DATA --------------------------");
         System.out.format("%2c%-25s%-25s%s%n", ' ', "Student Name", "Roll Number", "Total Marks");
         for (int i = 0; i < noOfObject; i++) {
             System.out.format("%2c%-30s%-24d%3d%n", ' ', students[i].getName(), students[i].getRollNo(),
-                    students[i].totalMarks());
+                    operation.totalMarks(students[i]));
         }
         System.out.println("-----------------------------------------------------------------");
     }
