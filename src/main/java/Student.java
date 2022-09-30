@@ -57,6 +57,26 @@ public class Student {
         this.englishMark = englishMark;
     }
 
+    public int getEnglishMark() {
+        return englishMark;
+    }
+
+    public int getMathematicsMark() {
+        return mathematicsMark;
+    }
+
+    public int getScienceMark() {
+        return scienceMark;
+    }
+
+    public int getSocialScienceMark() {
+        return socialScienceMark;
+    }
+
+    public int getComputerMark() {
+        return computerMark;
+    }
+
     public void setMathematicsMark(int mathematicsMark) {
         this.mathematicsMark = mathematicsMark;
     }
