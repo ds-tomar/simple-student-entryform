@@ -3,5 +3,9 @@ public class StudentOperation {
         return student.getEnglishMark() + student.getMathematicsMark() + student.getScienceMark() + student.getSocialScienceMark() + student.getComputerMark();
     }
 
+    public double percentage(Student student) {
+        return (student.getEnglishMark() + student.getMathematicsMark() + student.getScienceMark() + student.getSocialScienceMark() + student.getComputerMark()) / 5.0;
+    }
+
 
 }
