@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class StudentMain {
     public static void main(String[] args) {
-        final int MAX_SIZE = 2;
+        final int MAX_SIZE = 40;
         Student[] students = new Student[MAX_SIZE];
         StudentOperation operation = new StudentOperation();
         Scanner scanner = new Scanner(System.in);
@@ -25,8 +25,36 @@ public class StudentMain {
                         System.out.println("\n------------------------- Student Form -------------------------");
                         System.out.print("Enter your name: ");
                         students[count].setName(scanner.nextLine());
-                        System.out.print("Enter you roll number: ");
+
+                        /*
+                        * Check data for newly enter name already exist or not
+                        * if exist
+                        * ask user to enter name again
+                        * */
+                        for (int i = 0; i < count; i++) {
+                            if (students[count].getName().equalsIgnoreCase(students[i].getName())){
+                                System.out.format("Data for %s already exist%n", students[count].getName().toUpperCase());
+                                System.out.print("Enter your name again: ");
+                                students[count].setName(scanner.nextLine());
+                                i = -1;
+                            }
+                        }
+                        System.out.print("Enter your roll number: ");
                         students[count].setRollNo(scanner.nextInt());
+
+                        /*
+                        * check data for newly enter roll number already exist or not
+                        * if exit
+                        * ask user to enter roll number again
+                        * */
+                        for (int i = 0; i < count; i++) {
+                            if (students[count].getRollNo() == students[i].getRollNo()){
+                                System.out.format("Data for roll number %d already exist%n", students[count].getRollNo());
+                                System.out.print("Enter your roll number again: ");
+                                students[count].setRollNo(scanner.nextInt());
+                                i = -1;
+                            }
+                        }
                         System.out.print("Enter English Mark: ");
                         students[count].setEnglishMark(scanner.nextInt());
                         System.out.print("Enter Mathematics Mark: ");
@@ -70,7 +98,6 @@ public class StudentMain {
         while (choice != 4);
 
     }
-
     public static void display(Student[] students, StudentOperation operation, int noOfObject) {
         System.out.println("\n------------------------- STUDENT DATA --------------------------");
         System.out.format("%2c%-25s%-25s%s%n", ' ', "Student Name", "Roll Number", "Total Marks");
